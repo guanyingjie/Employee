@@ -16,6 +16,7 @@
 		<form class="form-signin" th:action="@{/user/login}">
 			<img class="mb-4" th:src="@{asserts/img/bootstrap-solid.svg}" alt="" width="72" height="72">
 			<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+			<p style="color: red" th:text="${msg}" th:if="${msg}"></p>
 			<label class="sr-only">Username</label>
 			<input type="text" th:name="username" class="form-control" placeholder="Username" required="" autofocus="">
 			<label class="sr-only">Password</label>

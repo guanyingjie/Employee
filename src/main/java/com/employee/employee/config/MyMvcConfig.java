@@ -7,8 +7,12 @@ import org.springframework.web.servlet.config.annotation.*;
 //@EnableWebMvc
 class WebMvcConfig implements WebMvcConfigurer {
     private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
-            "classpath:/META-INF/resources/", "classpath:/resources/",
-            "classpath:/static/", "classpath:/public/" };
+            "classpath:/META-INF/resources/",
+            "classpath:/resources/",
+            "classpath:/static/",
+            "classpath:/public/"
+//            "classpath:/resources/templates/"
+    };
 
 
     @Override
@@ -23,6 +27,16 @@ class WebMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/index.html").setViewName("index");
         registry.addViewController("/dashboard.html").setViewName("dashboard");
-        registry.addViewController("'/list.html").setViewName("list");
+        registry.addViewController("/list.html").setViewName("list");
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LoginHandlerInterecptor()).addPathPatterns("/**").excludePathPatterns(
+                "/",
+                "/index.html",
+                "/user/login",
+                "/asserts/**"
+        );
     }
 }
