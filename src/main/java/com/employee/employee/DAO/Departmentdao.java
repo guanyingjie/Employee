@@ -1,11 +1,13 @@
 package com.employee.employee.DAO;
 
 import com.employee.employee.pojo.Department;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+@Configuration
 public class Departmentdao {
     //模拟数据库 的数据
     private static Map<Integer, Department> departments = null;
